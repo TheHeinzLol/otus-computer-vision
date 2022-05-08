@@ -101,10 +101,11 @@ class TeamDataframeMaker:
             bbox_dict = json.load(f)
             
         for photo_number, photo_data in bbox_dict.items():
-            for bbox_data in photo_data.values():
+            for player_number, bbox_data in photo_data.items():
                 bbox_x_norm, bbox_y_norm, bbox_w_norm, bbox_h_norm = bbox_data['box']
-                target = bbox_data['team']
-                df_sport_teams = pd.concat([df_sport_teams, pd.DataFrame({'photo': [photo_number],
+                target = bbox_data.get('team')
+                df_sport_teams = pd.concat([df_sport_teams, pd.DataFrame({'photo_number': [int(photo_number)],
+                                                                          'player_number': [int(player_number)],
                                                                           'bbox_x_norm': [bbox_x_norm],
                                                                           'bbox_y_norm': [bbox_y_norm],
                                                                           'bbox_w_norm': [bbox_w_norm],
@@ -132,12 +133,12 @@ class TeamDataframeMaker:
         """
         
         def get_photo_path(photo_name, images_path):
-            photo_path = images_path + photo_name + '.jpeg'
+            photo_path = str(images_path) + str(photo_name) + '.jpeg'
             if not os.path.exists(photo_path):
                 raise Exception(f"Изображение {photo_path} не существует")
             return photo_path
                 
-        df_sport_teams.photo = df_sport_teams.photo.apply(get_photo_path, images_path=self.images_path)
+        df_sport_teams.loc[:, 'photo'] = df_sport_teams.loc[:, 'photo_number'].apply(get_photo_path, images_path=self.images_path)
         
         return df_sport_teams
     
@@ -266,7 +267,6 @@ class TeamDataframeMaker:
             bbox = [int(val) for val in bbox]
             mask = np.zeros(shape=image_cvt.shape[:2], dtype="uint8")
             mask = cv2.rectangle(mask, bbox[:2], bbox[2:], 1, thickness=-1)
-            masked_image = cv2.bitwise_and(image_cvt, image_cvt, mask=mask)
             res = []
             for idx_channel in range(3):
                 bbox_hist = cv2.calcHist([image_cvt], [idx_channel], mask, [bins], [0, 256]).flatten()
@@ -413,18 +413,29 @@ class TeamClassifier:
       Параметры следует брать из описания конкретной модели.
     folds : int
       Количество фолдов для разбиения датасета.
+    model_type : str
+      Определяет тип модели. Может принимать значения
+      training или clustering.
+      Для training в параметре model_class необходимо
+      передавать обучаемую на целевых метках модель. 
+      А для clustering модель кластеризации без обучения
+      на целевых метках.
     random_state : int
     debug : bool
     """
     
     def __init__(self, team_df_maker, fit_features_names, model_class, model_params=None, folds=5,
-                random_state=42, debug=False):
+                 model_type='training', random_state=42, debug=False):
+        
+        model_type = str(model_type).lower().strip()
+        assert model_type in ('clustering', 'training')
         
         self._team_df_maker = team_df_maker
         self.__fit_features_names = fit_features_names
         self.__model_class = model_class
         self.__model_params = model_params
         self.__folds = folds
+        self._model_type = model_type
         self.random_state = random_state
         self.__target_feature_name = 'target'
         self.__model_is_fitted = False
@@ -494,7 +505,7 @@ class TeamClassifier:
             return np.mean(self._train_kfold_acc)
         
     @classmethod
-    def load_from_json(cls, bboxes_json, image_path, fit_features_names=None, model_class=None, model_params=None, 
+    def load_from_json(cls, bboxes_json, image_path, model_type='training', fit_features_names=None, model_class=None, model_params=None, 
                        folds=5, random_state=42):
         """ Инициализация TeamClassifier с помощью файла bboxes.json
         
@@ -525,17 +536,17 @@ class TeamClassifier:
         team_df_maker.prepare_dataframe()
         
         if fit_features_names is None:
-            filter_f_names = ('photo', 'target', 'bbox_x1', 'bbox_y1', 'bbox_x2', 'bbox_y2')
+            filter_f_names = ('photo', 'photo_number', 'player_number', 'target', 'bbox_x1', 'bbox_y1', 'bbox_x2', 'bbox_y2')
             fit_features_names = [f_name for f_name in team_df_maker.df_sport_teams_.columns if f_name not in filter_f_names]
         
-        return cls(team_df_maker=team_df_maker, fit_features_names=fit_features_names, model_class=model_class, 
+        return cls(team_df_maker=team_df_maker, model_type=model_type, fit_features_names=fit_features_names, model_class=model_class, 
                    model_params=model_params, folds=folds)
     
     def fit(self):
         """Обучение модели"""
         
         self.__init_models()
-        
+            
         # Для каждого фолда обучаем отдельную модель
         for idx, (train_index, 
                   test_index) in enumerate(self.__skf.split(self._team_df_maker.df_sport_teams_[self.__fit_features_names], 
@@ -544,13 +555,17 @@ class TeamClassifier:
             # Поулчаекм модель для выбранного фолда
             model = self.__models[idx]
             
+            assert 'predict' in model.__dir__(), "У модели выбранного класса отсутствует метод predict, используйте метод fit_predict"
+            
             # Получаем данные для обучения выбранного фолда
             train_fold_df = self._team_df_maker.df_sport_teams_.iloc[train_index, :]
             test_fold_df = self._team_df_maker.df_sport_teams_.iloc[test_index, :]
 
             # В данных оставляем только признаки из self.__fit_features_names
-            X_train = train_fold_df[self.__fit_features_names]
-            X_val = test_fold_df[self.__fit_features_names]
+            X_train = train_fold_df.loc[:, self.__fit_features_names]
+            X_val = test_fold_df.loc[:, self.__fit_features_names]
+            
+            assert len(X_train) > 0
             
             y_train = train_fold_df[self.__target_feature_name]
             y_val = test_fold_df[self.__target_feature_name]
@@ -564,20 +579,61 @@ class TeamClassifier:
                 X_val_std = self.__scaler.transform(X_val)
               
             # Обучаем модель на стандартизированных данных фолда
-            model.fit(X_train_std, y_train)
             
-            # Получаем предсказания и считаем accuracy при обучении на фолде
-            y_pred = model.predict(X_val_std)
+            if self._model_type == 'training':
+                model.fit(X_train_std, y_train)
+            else:
+                y_pred = model.fit(X_train_std)
+               
+            y_pred = model.predict(X_val_std) 
             if self.debug:
                 print(f'Предсказания модели на фолде {idx}:')
                 print(y_pred)
             self._train_kfold_acc.append(accuracy_score(y_pred, y_val))
-            
+                
         # Ставим флаг обученности модели
         self.__model_is_fitted = True
+        
+    def fit_predict(self):
+        """ Используется для моделей кластеризации, у которых для предсказания используется только метод fit_ppredict
+        
+        Метод использовать только для моделей кластеризации, у которых нет метода predict.
+        В этом случае не используются фолды, а проверка accuracy происходит на всем датасете.
+        
+        Результат
+        ---------
+        
+        """
+        assert self._model_type == 'clustering'
+        
+        self.__init_models()
+        
+        # Поулчаекм модель для выбранного фолда
+        model = self.__models[0]
+        
+        assert 'predict' not in model.__dir__(), "У модели выбранного класса есть метод predict, используется predict вместо fit_predict"
+        assert 'fit_predict' in model.__dir__(), "У модели выбранного класса отсутствует метод fit_predict"
+
+        # В данных оставляем только признаки из self.__fit_features_names
+        X_train = self._team_df_maker.df_sport_teams_.loc[:, self.__fit_features_names]
+        y_val = self._team_df_maker.df_sport_teams_.loc[:, self.__target_feature_name]
+
+        assert len(X_train) > 0
+
+        X_train_std = self.__scaler.fit_transform(X_train)
+
+        # Обучаем модель на стандартизированных данных фолда
+        
+        y_pred = model.fit_predict(X_train_std)
+
+        self._train_kfold_acc.append(accuracy_score(y_pred, y_val))  
+        
+        return y_pred
             
     def predict(self, df_sport_teams: pd.DataFrame, kfold_predict_format: bool=False) -> np.ndarray:
         """Предсказание модели
+        
+        Только для классов моделей, у которых есть метод predict.
         
         Параметры
         ---------
@@ -602,6 +658,9 @@ class TeamClassifier:
         
         kfold_predict = []
         for idx, model in enumerate(self.__models):
+            
+            assert 'predict' in model.__dir__(), "У модели выбранного класса отсутствует метод predict, используйте метод fit_predict"
+            
             fold_y_pred = model.predict(X_std)
             kfold_predict.append(fold_y_pred)
             
@@ -619,8 +678,11 @@ class TeamClassifier:
         
         return kfold_mode.mode.flatten()
         
-    def predict_from_json(self, bboxes_json: str, image_path: str, kfold_predict_format: bool=False) -> np.ndarray:
+    def predict_from_json(self, bboxes_json: str, image_path: str, kfold_predict_format: bool=False,
+                          return_json=False) -> np.ndarray:
         """Предсказание модели для файлов json с разметкой боксов
+        
+        Только для классов моделей, у которых есть метод prediсt
         
         Параметры
         ---------
@@ -632,16 +694,42 @@ class TeamClassifier:
           Если True, то результат будет в формате:
             (N, C), где N - количество боксов, С - предсказание каждой модели
           Иначе формат (N,) - считается значение по большинству голосов
+        return_json : bool
+          Если True, то результат предсказания будет выдан в формате JSON.
+          Можно использовать только с kfold_predict_format=False.
           
         Результат
         ---------
-        y_pred : np.ndarray
+        y_pred : np.ndarray или [dict, dict, ... ]
         """
         
         if not self.__model_is_fitted:
             raise Exception("Модель не обучена, запустите метод fit")
         
+        if kfold_predict_format == True and return_json == True:
+            raise Exception("Для поулчения результата в json запустите предсказание с параметром kfold_predict_format=False")
+        
         team_df_maker = TeamDataframeMaker(bboxes_json=bboxes_json, image_path=image_path)
         team_df_maker.prepare_dataframe()
         
-        return self.predict(team_df_maker.df_sport_teams_, kfold_predict_format=kfold_predict_format)
+        model_predict = self.predict(team_df_maker.df_sport_teams_, kfold_predict_format=kfold_predict_format)
+        
+        if not return_json:
+            return model_predict
+        
+        df_sport_teams_predicted = team_df_maker.df_sport_teams_.copy()
+        df_sport_teams_predicted.loc[:, 'predicted_target'] = model_predict
+        
+        json_predict_data = {}
+        
+        for frame_number in team_df_maker.df_sport_teams_.photo_number.unique():
+            
+            frame_dict = {}
+            frame_df = df_sport_teams_predicted[df_sport_teams_predicted.photo_number == frame_number]
+            
+            for _, row in frame_df.iterrows():
+                frame_dict[int(row.player_number)] = int(row.predicted_target)
+                
+            json_predict_data[int(frame_number)] = frame_dict
+            
+        return json_predict_data
