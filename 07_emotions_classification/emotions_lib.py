@@ -985,7 +985,7 @@ class FaceDetector:
             plt.show()  
 
 
-class FaceEmojiDataMining:
+class FaceEmotionsDataMining:
     """ Генерация признаков для датасета Face expression recognition dataset на основе landmarks
     
     Метод start создаст объект self.mining_dataframe_, датафрейм с данными для обучения моделей.
@@ -1089,7 +1089,7 @@ class FaceEmojiDataMining:
         return self.start()
     
     
-class FacesEmojiDataset(Dataset):
+class FacesEmotionsDataset(Dataset):
     """ Датасет face expression recognition
     
     Параметры
@@ -1235,7 +1235,7 @@ class FacesEmojiDataset(Dataset):
         return model_data
     
 
-class FaceEmojiDataModule(pl.LightningDataModule):
+class FaceEmotionsDataModule(pl.LightningDataModule):
 
     def __init__(self, emoji_faces_df, train_loader_params=None, val_loader_params=None, 
                  dataset_params=None, seed=None):
@@ -1278,10 +1278,10 @@ class FaceEmojiDataModule(pl.LightningDataModule):
 
     def make_split_dict(self):
 
-        self.train_dataset = FacesEmojiDataset(emoji_faces_df=self.emoji_faces_df, **self.dataset_params)
+        self.train_dataset = FacesEmotionsDataset(emoji_faces_df=self.emoji_faces_df, **self.dataset_params)
         self.train_dataset.set_split('train')
 
-        self.val_dataset = FacesEmojiDataset(emoji_faces_df=self.emoji_faces_df, **self.dataset_params)
+        self.val_dataset = FacesEmotionsDataset(emoji_faces_df=self.emoji_faces_df, **self.dataset_params)
         self.val_dataset.set_split('val')
 
     def train_dataloader(self):
@@ -1295,7 +1295,7 @@ class FaceEmojiDataModule(pl.LightningDataModule):
                           num_workers=self.val_loader_params['num_workers'])
 
     
-class FaceEmojiFCModel(pl.LightningModule):
+class FaceEmotionsFCModel(pl.LightningModule):
     """ Модель с полносвязной сетью для классификации на признаках ландмарок
     
     Параметры
@@ -1508,7 +1508,7 @@ class FaceEmojiFCModel(pl.LightningModule):
             display.clear_output(wait=True)
             
             
-class FaceEmojiTransferModel(pl.LightningModule):
+class FaceEmotionsTransferModel(pl.LightningModule):
     """ Модель для трансферного обучения с извлечением признаков из изображения
 
     Параметры
@@ -1804,7 +1804,7 @@ class FaceEmojiTransferModel(pl.LightningModule):
             display.clear_output(wait=True)
             
             
-class FaceEmojiLandmarksModel(FaceEmojiTransferModel):
+class FaceEmotionsLandmarksModel(FaceEmotionsTransferModel):
     """ Модель для трансферного обучения с помощью признаков изображений и признаков ландмарок
 
     Параметры
