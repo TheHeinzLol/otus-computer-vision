@@ -1,0 +1,1065 @@
+2022-08-23 03:05:46,597 - mmaction - INFO - load checkpoint from http path: https://download.openmmlab.com/mmaction/recognition/slowfast/slowfast_r50_8x8x1_256e_kinetics400_rgb/slowfast_r50_8x8x1_256e_kinetics400_rgb_20200716-73547d2b.pth
+2022-08-23 03:05:46,925 - mmaction - WARNING - The model and loaded state dict do not match exactly
+
+unexpected key in source state_dict: cls_head.fc_cls.weight, cls_head.fc_cls.bias
+
+missing keys in source state_dict: roi_head.shared_head.conv1.conv.weight, roi_head.shared_head.conv1.bn.weight, roi_head.shared_head.conv1.bn.bias, roi_head.shared_head.conv1.bn.running_mean, roi_head.shared_head.conv1.bn.running_var, roi_head.shared_head.conv2.conv.weight, roi_head.shared_head.conv2.bn.weight, roi_head.shared_head.conv2.bn.bias, roi_head.shared_head.conv2.bn.running_mean, roi_head.shared_head.conv2.bn.running_var, roi_head.bbox_head.fc_cls.weight, roi_head.bbox_head.fc_cls.bias
+
+2022-08-23 03:05:46,931 - mmaction - INFO - Start running, host: inject0r@DESKTOP-5G5CF79, work_dir: D:\Data Science\other\mmaction\mma_project\work_dirs\slowfast_acrn_kinetics_pretrained_r50_8x8x1_cosine_10e_ava22_rgb
+2022-08-23 03:05:46,931 - mmaction - INFO - Hooks will be executed in the following order:
+before_run:
+(VERY_HIGH   ) CosineAnnealingLrUpdaterHook       
+(NORMAL      ) CheckpointHook                     
+(LOW         ) EvalHook                           
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+before_train_epoch:
+(VERY_HIGH   ) CosineAnnealingLrUpdaterHook       
+(LOW         ) IterTimerHook                      
+(LOW         ) EvalHook                           
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+before_train_iter:
+(VERY_HIGH   ) CosineAnnealingLrUpdaterHook       
+(LOW         ) IterTimerHook                      
+(LOW         ) EvalHook                           
+ -------------------- 
+after_train_iter:
+(ABOVE_NORMAL) OptimizerHook                      
+(NORMAL      ) CheckpointHook                     
+(LOW         ) IterTimerHook                      
+(LOW         ) EvalHook                           
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+after_train_epoch:
+(NORMAL      ) CheckpointHook                     
+(LOW         ) EvalHook                           
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+before_val_epoch:
+(LOW         ) IterTimerHook                      
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+before_val_iter:
+(LOW         ) IterTimerHook                      
+ -------------------- 
+after_val_iter:
+(LOW         ) IterTimerHook                      
+ -------------------- 
+after_val_epoch:
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+after_run:
+(VERY_LOW    ) TextLoggerHook                     
+ -------------------- 
+2022-08-23 03:05:46,932 - mmaction - INFO - workflow: [('train', 1)], max: 50 epochs
+2022-08-23 03:05:46,932 - mmaction - INFO - Checkpoints will be saved to D:\Data Science\other\mmaction\mma_project\work_dirs\slowfast_acrn_kinetics_pretrained_r50_8x8x1_cosine_10e_ava22_rgb by HardDiskBackend.
+C:\ProgramData\Anaconda3\envs\open-mmlab\lib\site-packages\mmcv\runner\hooks\evaluation.py:222: UserWarning: runner.meta is None. Creating an empty one.
+  warnings.warn('runner.meta is None. Creating an empty one.')
+C:\ProgramData\Anaconda3\envs\open-mmlab\lib\site-packages\torch\nn\functional.py:3679: UserWarning: The default behavior for interpolate/upsample with float scale_factor changed in 1.6.0 to align with other frameworks/libraries, and now uses scale_factor directly, instead of relying on the computed output size. If you wish to restore the old behavior, please set recompute_scale_factor=True. See the documentation of nn.Upsample for details. 
+  warnings.warn(
+2022-08-23 03:06:26,272 - mmaction - INFO - Saving checkpoint at 1 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.2 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:06:46,439 - mmaction - INFO - Evaluating mAP ...
+==> 0.000498772 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000999212 seconds to Reading detection results
+==> 0.000494003 seconds to read file AVA_20220823_030646_result.csv
+==> 0.00150228 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00849962 seconds to convert detections
+==> 0.00150037 seconds to run_evaluator
+2022-08-23 03:06:46,454 - mmaction - INFO - 
+mAP@0.5IOU	 0.7497
+mAP@0.5IOU=	0.7497299873615663
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.6574074074074073
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.23076923076923078
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.843536619326093
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	1.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7666666666666666
+2022-08-23 03:06:55,372 - mmaction - INFO - Now best checkpoint is saved as best_mAP@0.5IOU_epoch_1.pth.
+2022-08-23 03:06:55,373 - mmaction - INFO - Best mAP@0.5IOU is 0.7497 at 1 epoch.
+2022-08-23 03:06:55,373 - mmaction - INFO - Epoch(val) [1][25]	mAP@0.5IOU: 0.7497
+2022-08-23 03:07:25,824 - mmaction - INFO - Saving checkpoint at 2 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:07:44,560 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000990629 seconds to Reading detection results
+==> 0.000499725 seconds to read file AVA_20220823_030744_result.csv
+==> 0.000999689 seconds to Reading detection results
+==> 0.000503302 seconds to Convert groundtruth
+==> 0.00450039 seconds to convert detections
+==> 0.000999451 seconds to run_evaluator
+2022-08-23 03:07:44,571 - mmaction - INFO - 
+mAP@0.5IOU	 0.2722
+2022-08-23 03:07:44,572 - mmaction - INFO - Epoch(val) [2][25]	mAP@0.5IOU: 0.2722
+mAP@0.5IOU=	0.2722069597069597
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8832417582417583
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.75
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:08:14,928 - mmaction - INFO - Saving checkpoint at 3 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:08:33,662 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000500202 seconds to Reading detection results
+==> 0.000515938 seconds to read file AVA_20220823_030833_result.csv
+==> 0.00100064 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00549865 seconds to convert detections
+==> 0.00100017 seconds to run_evaluator
+2022-08-23 03:08:33,673 - mmaction - INFO - 
+mAP@0.5IOU	 0.2478
+2022-08-23 03:08:33,674 - mmaction - INFO - Epoch(val) [3][25]	mAP@0.5IOU: 0.2478
+mAP@0.5IOU=	0.24777056679230594
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.25555555555555554
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.34782608695652173
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8832417582417583
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:09:04,174 - mmaction - INFO - Saving checkpoint at 4 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:09:23,711 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000541687 seconds to Reading detection results
+==> 0.000499725 seconds to read file AVA_20220823_030923_result.csv
+==> 0.00100064 seconds to Reading detection results
+==> 0.000504971 seconds to Convert groundtruth
+==> 0.00649691 seconds to convert detections
+==> 0.00100207 seconds to run_evaluator
+2022-08-23 03:09:23,724 - mmaction - INFO - 
+mAP@0.5IOU	 0.4786
+2022-08-23 03:09:23,725 - mmaction - INFO - Epoch(val) [4][25]	mAP@0.5IOU: 0.4786
+mAP@0.5IOU=	0.4786315754159957
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.28055555555555556
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.0625
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.862067230273752
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	1.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6666666666666666
+2022-08-23 03:09:54,135 - mmaction - INFO - Saving checkpoint at 5 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.3 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:10:21,132 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000999212 seconds to Reading detection results
+==> 0.000498056 seconds to read file AVA_20220823_031021_result.csv
+==> 0.000498056 seconds to Reading detection results
+==> 0.000502586 seconds to Convert groundtruth
+==> 0.00699949 seconds to convert detections
+==> 0.000998974 seconds to run_evaluator
+2022-08-23 03:10:21,145 - mmaction - INFO - 
+mAP@0.5IOU	 0.3379
+2022-08-23 03:10:21,146 - mmaction - INFO - Epoch(val) [5][25]	mAP@0.5IOU: 0.3379
+mAP@0.5IOU=	0.3379063120974886
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3822222222222222
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.3125
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.41880341880341876
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7139122315592904
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.2
+2022-08-23 03:10:52,183 - mmaction - INFO - Saving checkpoint at 6 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:11:12,851 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.000503302 seconds to read file AVA_20220823_031112_result.csv
+==> 0.000995159 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00696707 seconds to convert detections
+==> 0.00100017 seconds to run_evaluator
+2022-08-23 03:11:12,864 - mmaction - INFO - 
+mAP@0.5IOU	 0.5008
+2022-08-23 03:11:12,865 - mmaction - INFO - Epoch(val) [6][25]	mAP@0.5IOU: 0.5008
+mAP@0.5IOU=	0.500812028870836
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3333333333333333
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.65
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7571611081226466
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8643777317690361
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.4
+2022-08-23 03:11:43,574 - mmaction - INFO - Saving checkpoint at 7 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:12:03,348 - mmaction - INFO - Evaluating mAP ...
+==> 0.000500679 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100088 seconds to Reading detection results
+==> 0.00050211 seconds to read file AVA_20220823_031203_result.csv
+==> 0.000998974 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.0059979 seconds to convert detections
+==> 0.000499249 seconds to run_evaluator
+2022-08-23 03:12:03,360 - mmaction - INFO - 
+mAP@0.5IOU	 0.3258
+2022-08-23 03:12:03,361 - mmaction - INFO - Epoch(val) [7][25]	mAP@0.5IOU: 0.3258
+mAP@0.5IOU=	0.32584222540744284
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.32
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8850533524446569
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.75
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:12:33,470 - mmaction - INFO - Saving checkpoint at 8 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:12:52,778 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010128 seconds to Reading detection results
+==> 0 seconds to read file AVA_20220823_031252_result.csv
+==> 0.000999928 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00499773 seconds to convert detections
+==> 0.000500202 seconds to run_evaluator
+2022-08-23 03:12:52,789 - mmaction - INFO - 
+mAP@0.5IOU	 0.2744
+2022-08-23 03:12:52,790 - mmaction - INFO - Epoch(val) [8][25]	mAP@0.5IOU: 0.2744
+mAP@0.5IOU=	0.27437203228869894
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.2222222222222222
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.3806818181818182
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.23076923076923078
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8125589225589226
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:13:23,011 - mmaction - INFO - Saving checkpoint at 9 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.3 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:13:43,311 - mmaction - INFO - Evaluating mAP ...
+==> 0.000501394 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.000500679 seconds to read file AVA_20220823_031343_result.csv
+==> 0.00150084 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00549912 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:13:43,323 - mmaction - INFO - 
+mAP@0.5IOU	 0.2424
+2022-08-23 03:13:43,324 - mmaction - INFO - Epoch(val) [9][25]	mAP@0.5IOU: 0.2424
+mAP@0.5IOU=	0.24240059457450758
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.13333333333333333
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.5384615384615384
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7826086956521738
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:14:14,024 - mmaction - INFO - Saving checkpoint at 10 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.3 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:14:37,706 - mmaction - INFO - Evaluating mAP ...
+==> 0.000500441 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.000499487 seconds to read file AVA_20220823_031437_result.csv
+==> 0.00150037 seconds to Reading detection results
+==> 0.000499249 seconds to Convert groundtruth
+==> 0.00949931 seconds to convert detections
+==> 0.00150061 seconds to run_evaluator
+2022-08-23 03:14:37,722 - mmaction - INFO - 
+mAP@0.5IOU	 0.6329
+2022-08-23 03:14:37,723 - mmaction - INFO - Epoch(val) [10][25]	mAP@0.5IOU: 0.6329
+mAP@0.5IOU=	0.6329002548480271
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3157894736842105
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.5402777777777777
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.6769112007030974
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8541666666666667
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	1.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.41025641025641024
+2022-08-23 03:15:08,427 - mmaction - INFO - Saving checkpoint at 11 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.3 task/s, elapsed: 11s, ETA:     0s
+2022-08-23 03:15:31,935 - mmaction - INFO - Evaluating mAP ...
+==> 0.000499725 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.00100136 seconds to read file AVA_20220823_031531_result.csv
+==> 0.00150061 seconds to Reading detection results
+==> 0.000499487 seconds to Convert groundtruth
+==> 0.0094974 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:15:31,950 - mmaction - INFO - 
+mAP@0.5IOU	 0.3995
+2022-08-23 03:15:31,951 - mmaction - INFO - Epoch(val) [11][25]	mAP@0.5IOU: 0.3995
+mAP@0.5IOU=	0.39949425369188013
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.2857142857142857
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.40337301587301577
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.6759446693657221
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7929629629629631
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0625
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.17647058823529413
+2022-08-23 03:16:02,797 - mmaction - INFO - Saving checkpoint at 12 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:16:25,703 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100017 seconds to Reading detection results
+==> 0.000500679 seconds to read file AVA_20220823_031625_result.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900126 seconds to convert detections
+==> 0.000998735 seconds to run_evaluator
+2022-08-23 03:16:25,718 - mmaction - INFO - 
+mAP@0.5IOU	 0.4024
+2022-08-23 03:16:25,719 - mmaction - INFO - Epoch(val) [12][25]	mAP@0.5IOU: 0.4024
+mAP@0.5IOU=	0.40241628689722725
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3625
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.2328125
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.5699922299922299
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8632280791104321
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.27485380116959063
+2022-08-23 03:16:55,866 - mmaction - INFO - Saving checkpoint at 13 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:17:17,848 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000961304 seconds to Reading detection results
+==> 0.000500917 seconds to read file AVA_20220823_031717_result.csv
+==> 0.00100064 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00902748 seconds to convert detections
+==> 0.000965595 seconds to run_evaluator
+2022-08-23 03:17:17,863 - mmaction - INFO - 
+mAP@0.5IOU	 0.5098
+2022-08-23 03:17:17,864 - mmaction - INFO - Epoch(val) [13][25]	mAP@0.5IOU: 0.5098
+mAP@0.5IOU=	0.509813369668442
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.43888888888888894
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.34782608695652173
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.6356043956043955
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8587830687830689
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.5
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.2777777777777778
+2022-08-23 03:17:48,017 - mmaction - INFO - Saving checkpoint at 14 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:18:21,121 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000976801 seconds to Reading detection results
+==> 0.00048542 seconds to read file AVA_20220823_031821_result.csv
+==> 0.000992298 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00554013 seconds to convert detections
+==> 0.000491619 seconds to run_evaluator
+2022-08-23 03:18:21,132 - mmaction - INFO - 
+mAP@0.5IOU	 0.2549
+2022-08-23 03:18:21,133 - mmaction - INFO - Epoch(val) [14][25]	mAP@0.5IOU: 0.2549
+mAP@0.5IOU=	0.2548786181139122
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.16666666666666666
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.08333333333333333
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.52
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7592717086834733
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.0
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.0
+2022-08-23 03:18:51,686 - mmaction - INFO - Saving checkpoint at 15 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:19:27,424 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100112 seconds to Reading detection results
+==> 0.000500679 seconds to read file AVA_20220823_031927_result.csv
+==> 0.00101256 seconds to Reading detection results
+==> 0.000499964 seconds to Convert groundtruth
+==> 0.00904489 seconds to convert detections
+==> 0.00100017 seconds to run_evaluator
+2022-08-23 03:19:27,439 - mmaction - INFO - 
+mAP@0.5IOU	 0.6449
+2022-08-23 03:19:27,440 - mmaction - INFO - Epoch(val) [15][25]	mAP@0.5IOU: 0.6449
+mAP@0.5IOU=	0.6448731704262395
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.45666666666666667
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.6944240542066629
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7974358974358974
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8437893273251329
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.5
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.576923076923077
+2022-08-23 03:19:57,747 - mmaction - INFO - Saving checkpoint at 16 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:20:24,652 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100136 seconds to Reading detection results
+==> 0.000498056 seconds to read file AVA_20220823_032024_result.csv
+==> 0.000997543 seconds to Reading detection results
+==> 0.000502586 seconds to Convert groundtruth
+==> 0.00899625 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:20:24,667 - mmaction - INFO - 
+mAP@0.5IOU	 0.5856
+2022-08-23 03:20:24,668 - mmaction - INFO - Epoch(val) [16][25]	mAP@0.5IOU: 0.5856
+mAP@0.5IOU=	0.5856482771790742
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.32936507936507936
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8284722222222223
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7019230769230771
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7612721417069241
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.25
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6428571428571429
+2022-08-23 03:20:54,867 - mmaction - INFO - Saving checkpoint at 17 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:21:22,302 - mmaction - INFO - Evaluating mAP ...
+==> 0.000506878 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000999928 seconds to Reading detection results
+==> 0.000499249 seconds to read file AVA_20220823_032122_result.csv
+==> 0.00150084 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900602 seconds to convert detections
+==> 0.000993729 seconds to run_evaluator
+2022-08-23 03:21:22,317 - mmaction - INFO - 
+mAP@0.5IOU	 0.6212
+2022-08-23 03:21:22,318 - mmaction - INFO - Epoch(val) [17][25]	mAP@0.5IOU: 0.6212
+mAP@0.5IOU=	0.6212245640973711
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5576923076923077
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.7124999999999999
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8294871794871794
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8776678974047394
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.638888888888889
+2022-08-23 03:21:52,425 - mmaction - INFO - Saving checkpoint at 18 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:22:19,502 - mmaction - INFO - Evaluating mAP ...
+==> 0.00049901 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000998974 seconds to Reading detection results
+==> 0.000999928 seconds to read file AVA_20220823_032219_result.csv
+==> 0.00150084 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00850773 seconds to convert detections
+==> 0.0010004 seconds to run_evaluator
+2022-08-23 03:22:19,516 - mmaction - INFO - 
+mAP@0.5IOU	 0.7279
+2022-08-23 03:22:19,517 - mmaction - INFO - Epoch(val) [18][25]	mAP@0.5IOU: 0.7279
+mAP@0.5IOU=	0.727857911759752
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.6090867264780309
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8737980769230769
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9786324786324786
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8980544309491678
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.09090909090909091
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.9166666666666666
+2022-08-23 03:22:49,620 - mmaction - INFO - Saving checkpoint at 19 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:23:16,544 - mmaction - INFO - Evaluating mAP ...
+==> 0.000494003 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000494003 seconds to Reading detection results
+==> 0.000994921 seconds to read file AVA_20220823_032316_result.csv
+==> 0.00149441 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00799155 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:23:16,557 - mmaction - INFO - 
+mAP@0.5IOU	 0.4666
+2022-08-23 03:23:16,559 - mmaction - INFO - Epoch(val) [19][25]	mAP@0.5IOU: 0.4666
+mAP@0.5IOU=	0.46658062667653466
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.1799083269671505
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.813034188034188
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8226773226773227
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8171972557138798
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.06666666666666667
+2022-08-23 03:23:46,922 - mmaction - INFO - Saving checkpoint at 20 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:24:15,811 - mmaction - INFO - Evaluating mAP ...
+==> 0.000491381 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000990629 seconds to Reading detection results
+==> 0.000499725 seconds to read file AVA_20220823_032415_result.csv
+==> 0.0010066 seconds to Reading detection results
+==> 0.00049305 seconds to Convert groundtruth
+==> 0.00900221 seconds to convert detections
+==> 0.000996113 seconds to run_evaluator
+2022-08-23 03:24:15,826 - mmaction - INFO - 
+mAP@0.5IOU	 0.6333
+2022-08-23 03:24:15,827 - mmaction - INFO - Epoch(val) [20][25]	mAP@0.5IOU: 0.6333
+mAP@0.5IOU=	0.6333408920406086
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.49230769230769234
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.5543154761904762
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7754296985066215
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8668813741277508
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	1.0
+2022-08-23 03:24:46,015 - mmaction - INFO - Saving checkpoint at 21 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:25:14,403 - mmaction - INFO - Evaluating mAP ...
+==> 0.000459671 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000968695 seconds to Reading detection results
+==> 0.000532866 seconds to read file AVA_20220823_032514_result.csv
+==> 0.00103354 seconds to Reading detection results
+==> 0.000500679 seconds to Convert groundtruth
+==> 0.00854802 seconds to convert detections
+==> 0.000546694 seconds to run_evaluator
+2022-08-23 03:25:14,418 - mmaction - INFO - 
+mAP@0.5IOU	 0.6357
+2022-08-23 03:25:14,419 - mmaction - INFO - Epoch(val) [21][25]	mAP@0.5IOU: 0.6357
+mAP@0.5IOU=	0.6357272484710565
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.37626262626262624
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.6041666666666666
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.902204228520018
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8650633027103616
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.06666666666666667
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	1.0
+2022-08-23 03:25:44,629 - mmaction - INFO - Saving checkpoint at 22 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:26:14,127 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010016 seconds to Reading detection results
+==> 0.000499964 seconds to read file AVA_20220823_032614_result.csv
+==> 0.00100017 seconds to Reading detection results
+==> 0.000499964 seconds to Convert groundtruth
+==> 0.00902891 seconds to convert detections
+==> 0.000999212 seconds to run_evaluator
+2022-08-23 03:26:14,143 - mmaction - INFO - 
+mAP@0.5IOU	 0.5338
+2022-08-23 03:26:14,153 - mmaction - INFO - Epoch(val) [22][25]	mAP@0.5IOU: 0.5338
+mAP@0.5IOU=	0.5337868314412937
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.43567251461988304
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8422619047619048
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8461538461538461
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.7955917874396135
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.17192982456140352
+2022-08-23 03:26:44,362 - mmaction - INFO - Saving checkpoint at 23 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:27:10,633 - mmaction - INFO - Evaluating mAP ...
+==> 0.000498533 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000964642 seconds to Reading detection results
+==> 0.000498295 seconds to read file AVA_20220823_032710_result.csv
+==> 0.000999451 seconds to Reading detection results
+==> 0.00049901 seconds to Convert groundtruth
+==> 0.00902629 seconds to convert detections
+==> 0.00100088 seconds to run_evaluator
+2022-08-23 03:27:10,649 - mmaction - INFO - 
+mAP@0.5IOU	 0.6320
+2022-08-23 03:27:10,649 - mmaction - INFO - Epoch(val) [23][25]	mAP@0.5IOU: 0.6320
+mAP@0.5IOU=	0.6319827424897084
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.4662698412698412
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8613095238095239
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7861191440138808
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8797852474323062
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.14285714285714285
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6555555555555556
+2022-08-23 03:27:40,780 - mmaction - INFO - Saving checkpoint at 24 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:28:12,159 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100923 seconds to Reading detection results
+==> 0.000499964 seconds to read file AVA_20220823_032812_result.csv
+==> 0.00100017 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950384 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:28:12,174 - mmaction - INFO - 
+mAP@0.5IOU	 0.6398
+2022-08-23 03:28:12,175 - mmaction - INFO - Epoch(val) [24][25]	mAP@0.5IOU: 0.6398
+mAP@0.5IOU=	0.6397926067491285
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.6111111111111112
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.85
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9725274725274726
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8667837235228539
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.125
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.4133333333333333
+2022-08-23 03:28:42,546 - mmaction - INFO - Saving checkpoint at 25 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:29:14,673 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.000488281 seconds to read file AVA_20220823_032914_result.csv
+==> 0.00098753 seconds to Reading detection results
+==> 0.000502825 seconds to Convert groundtruth
+==> 0.00850391 seconds to convert detections
+==> 0.000994205 seconds to run_evaluator
+2022-08-23 03:29:14,688 - mmaction - INFO - 
+mAP@0.5IOU	 0.6734
+2022-08-23 03:29:14,702 - mmaction - INFO - Epoch(val) [25][25]	mAP@0.5IOU: 0.6734
+mAP@0.5IOU=	0.6734090144342337
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5398860398860399
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9069940476190477
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.7564102564102564
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9026399331662489
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.14285714285714285
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7916666666666666
+2022-08-23 03:29:44,943 - mmaction - INFO - Saving checkpoint at 26 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:30:14,430 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100064 seconds to Reading detection results
+==> 0.000509977 seconds to read file AVA_20220823_033014_result.csv
+==> 0.000997543 seconds to Reading detection results
+==> 0.000498533 seconds to Convert groundtruth
+==> 0.00849509 seconds to convert detections
+==> 0.00101495 seconds to run_evaluator
+2022-08-23 03:30:14,446 - mmaction - INFO - 
+mAP@0.5IOU	 0.6853
+2022-08-23 03:30:14,446 - mmaction - INFO - Epoch(val) [26][25]	mAP@0.5IOU: 0.6853
+mAP@0.5IOU=	0.6853019783411941
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.467948717948718
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9138888888888889
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9004524886877828
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.919997964997965
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.14285714285714285
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7666666666666666
+2022-08-23 03:30:44,685 - mmaction - INFO - Saving checkpoint at 27 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:31:13,898 - mmaction - INFO - Evaluating mAP ...
+==> 0.00053525 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000997066 seconds to Reading detection results
+==> 0.000509501 seconds to read file AVA_20220823_033113_result.csv
+==> 0.00099206 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900006 seconds to convert detections
+==> 0.000999689 seconds to run_evaluator
+2022-08-23 03:31:13,913 - mmaction - INFO - 
+mAP@0.5IOU	 0.5523
+2022-08-23 03:31:13,914 - mmaction - INFO - Epoch(val) [27][25]	mAP@0.5IOU: 0.5523
+mAP@0.5IOU=	0.5523007289551408
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3888591800356506
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.5842261904761905
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9835164835164836
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8921231546231545
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.14285714285714285
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.3222222222222222
+2022-08-23 03:31:44,105 - mmaction - INFO - Saving checkpoint at 28 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:32:08,669 - mmaction - INFO - Evaluating mAP ...
+==> 0.000493765 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000993729 seconds to Reading detection results
+==> 0.00100374 seconds to read file AVA_20220823_033208_result.csv
+==> 0.00100374 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950575 seconds to convert detections
+==> 0.000981808 seconds to run_evaluator
+2022-08-23 03:32:08,684 - mmaction - INFO - 
+mAP@0.5IOU	 0.7039
+2022-08-23 03:32:08,685 - mmaction - INFO - Epoch(val) [28][25]	mAP@0.5IOU: 0.7039
+mAP@0.5IOU=	0.7039342139342138
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5777777777777778
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8712121212121212
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9512820512820512
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9455555555555556
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7666666666666666
+2022-08-23 03:32:38,906 - mmaction - INFO - Saving checkpoint at 29 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:33:08,615 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000968695 seconds to Reading detection results
+==> 0.000500679 seconds to read file AVA_20220823_033308_result.csv
+==> 0.00100088 seconds to Reading detection results
+==> 0.000499249 seconds to Convert groundtruth
+==> 0.0100057 seconds to convert detections
+==> 0.000993729 seconds to run_evaluator
+2022-08-23 03:33:08,631 - mmaction - INFO - 
+mAP@0.5IOU	 0.7823
+2022-08-23 03:33:08,632 - mmaction - INFO - The previous best checkpoint D:\Data Science\other\mmaction\mma_project\work_dirs\slowfast_acrn_kinetics_pretrained_r50_8x8x1_cosine_10e_ava22_rgb\best_mAP@0.5IOU_epoch_1.pth was removed
+mAP@0.5IOU=	0.7822918810714387
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5982905982905983
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.989010989010989
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9397830324603779
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.16666666666666666
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	1.0
+2022-08-23 03:33:27,723 - mmaction - INFO - Now best checkpoint is saved as best_mAP@0.5IOU_epoch_29.pth.
+2022-08-23 03:33:27,723 - mmaction - INFO - Best mAP@0.5IOU is 0.7823 at 29 epoch.
+2022-08-23 03:33:27,724 - mmaction - INFO - Epoch(val) [29][25]	mAP@0.5IOU: 0.7823
+2022-08-23 03:33:58,027 - mmaction - INFO - Saving checkpoint at 30 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:34:26,823 - mmaction - INFO - Evaluating mAP ...
+==> 0.000496387 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000959396 seconds to Reading detection results
+==> 0.000500202 seconds to read file AVA_20220823_033426_result.csv
+==> 0.000500202 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950527 seconds to convert detections
+==> 0.00100017 seconds to run_evaluator
+2022-08-23 03:34:26,838 - mmaction - INFO - 
+mAP@0.5IOU	 0.6950
+2022-08-23 03:34:26,839 - mmaction - INFO - Epoch(val) [30][25]	mAP@0.5IOU: 0.6950
+mAP@0.5IOU=	0.6949891761485963
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.48611111111111116
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8555555555555555
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8937445807011024
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.125
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.8095238095238095
+2022-08-23 03:34:56,992 - mmaction - INFO - Saving checkpoint at 31 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:35:28,220 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000983477 seconds to Reading detection results
+==> 0.000532866 seconds to read file AVA_20220823_033528_result.csv
+==> 0.00100017 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00899363 seconds to convert detections
+==> 0.00100183 seconds to run_evaluator
+2022-08-23 03:35:28,236 - mmaction - INFO - 
+mAP@0.5IOU	 0.7017
+2022-08-23 03:35:28,237 - mmaction - INFO - Epoch(val) [31][25]	mAP@0.5IOU: 0.7017
+mAP@0.5IOU=	0.7016523286016022
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.37499999999999994
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.875
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8736374961071317
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8862764755024817
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.2
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	1.0
+2022-08-23 03:35:58,403 - mmaction - INFO - Saving checkpoint at 32 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:36:26,486 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000992537 seconds to Reading detection results
+==> 0.000500202 seconds to read file AVA_20220823_033626_result.csv
+==> 0.000999689 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.010006 seconds to convert detections
+==> 0.00149465 seconds to run_evaluator
+2022-08-23 03:36:26,502 - mmaction - INFO - 
+mAP@0.5IOU	 0.6771
+2022-08-23 03:36:26,503 - mmaction - INFO - Epoch(val) [32][25]	mAP@0.5IOU: 0.6771
+mAP@0.5IOU=	0.6771486296641096
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5176767676767677
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.861013986013986
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9130420662928402
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9211589580010634
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.75
+2022-08-23 03:36:56,532 - mmaction - INFO - Saving checkpoint at 33 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:37:28,144 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000961065 seconds to Reading detection results
+==> 0.00053668 seconds to read file AVA_20220823_033728_result.csv
+==> 0.0010128 seconds to Reading detection results
+==> 0.000503778 seconds to Convert groundtruth
+==> 0.00905991 seconds to convert detections
+==> 0.000977039 seconds to run_evaluator
+2022-08-23 03:37:28,159 - mmaction - INFO - 
+mAP@0.5IOU	 0.6765
+2022-08-23 03:37:28,194 - mmaction - INFO - Epoch(val) [33][25]	mAP@0.5IOU: 0.6765
+mAP@0.5IOU=	0.6764898648050822
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5641025641025642
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.95
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9194139194139194
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9032004830917874
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6111111111111112
+2022-08-23 03:37:58,136 - mmaction - INFO - Saving checkpoint at 34 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:38:29,858 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000461817 seconds to Reading detection results
+==> 0.000495195 seconds to read file AVA_20220823_033829_result.csv
+==> 0.000994921 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950575 seconds to convert detections
+==> 0.000994444 seconds to run_evaluator
+2022-08-23 03:38:29,874 - mmaction - INFO - 
+mAP@0.5IOU	 0.6347
+2022-08-23 03:38:29,903 - mmaction - INFO - Epoch(val) [34][25]	mAP@0.5IOU: 0.6347
+mAP@0.5IOU=	0.6347098989695442
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.3592171717171717
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9861111111111112
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8736374961071317
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8499145299145299
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.125
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6143790849673203
+2022-08-23 03:39:00,291 - mmaction - INFO - Saving checkpoint at 35 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:39:32,564 - mmaction - INFO - Evaluating mAP ...
+==> 0.000473022 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000473022 seconds to Reading detection results
+==> 0.000500917 seconds to read file AVA_20220823_033932_result.csv
+==> 0.00100327 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00905752 seconds to convert detections
+==> 0.000983477 seconds to run_evaluator
+2022-08-23 03:39:32,579 - mmaction - INFO - 
+mAP@0.5IOU	 0.7022
+2022-08-23 03:39:32,580 - mmaction - INFO - Epoch(val) [35][25]	mAP@0.5IOU: 0.7022
+mAP@0.5IOU=	0.7021643758093905
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.6270053475935828
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9375
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.8865160202978731
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.896885521885522
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.14285714285714285
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7222222222222222
+2022-08-23 03:40:02,501 - mmaction - INFO - Saving checkpoint at 36 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:40:35,536 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100207 seconds to Reading detection results
+==> 0.000506401 seconds to read file AVA_20220823_034035_result.csv
+==> 0.000999928 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900435 seconds to convert detections
+==> 0.000999689 seconds to run_evaluator
+2022-08-23 03:40:35,551 - mmaction - INFO - 
+mAP@0.5IOU	 0.6676
+2022-08-23 03:40:35,552 - mmaction - INFO - Epoch(val) [36][25]	mAP@0.5IOU: 0.6676
+mAP@0.5IOU=	0.6676010684162859
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.6404040404040404
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9861111111111112
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9897435897435898
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9095496894409937
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.36868686868686873
+2022-08-23 03:41:05,751 - mmaction - INFO - Saving checkpoint at 37 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:41:37,463 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100565 seconds to Reading detection results
+==> 0.000517845 seconds to read file AVA_20220823_034137_result.csv
+==> 0.00100064 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950646 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:41:37,479 - mmaction - INFO - 
+mAP@0.5IOU	 0.6886
+2022-08-23 03:41:37,480 - mmaction - INFO - Epoch(val) [37][25]	mAP@0.5IOU: 0.6886
+mAP@0.5IOU=	0.6886110648610649
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.543939393939394
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.9861111111111112
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9897435897435898
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8827056277056278
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6180555555555556
+2022-08-23 03:42:07,694 - mmaction - INFO - Saving checkpoint at 38 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:42:27,983 - mmaction - INFO - Evaluating mAP ...
+==> 0.000551462 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00103378 seconds to Reading detection results
+==> 0.000501633 seconds to read file AVA_20220823_034227_result.csv
+==> 0.00100088 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.0095048 seconds to convert detections
+==> 0.000511408 seconds to run_evaluator
+2022-08-23 03:42:27,998 - mmaction - INFO - 
+mAP@0.5IOU	 0.6914
+2022-08-23 03:42:27,999 - mmaction - INFO - Epoch(val) [38][25]	mAP@0.5IOU: 0.6914
+mAP@0.5IOU=	0.6913615818823905
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5449346405228759
+PerformanceByCategory/AP@0.5IOU/distance_punch=	0.8407738095238095
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9641489731987469
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9157363104731526
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.09090909090909091
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7916666666666666
+2022-08-23 03:42:58,082 - mmaction - INFO - Saving checkpoint at 39 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:43:26,483 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100684 seconds to Reading detection results
+==> 0.000497341 seconds to read file AVA_20220823_034326_result.csv
+==> 0.00149298 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900602 seconds to convert detections
+==> 0.00150037 seconds to run_evaluator
+2022-08-23 03:43:26,498 - mmaction - INFO - 
+mAP@0.5IOU	 0.6931
+2022-08-23 03:43:26,498 - mmaction - INFO - Epoch(val) [39][25]	mAP@0.5IOU: 0.6931
+mAP@0.5IOU=	0.6931454819690114
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.4607843137254902
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8405128205128205
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.09090909090909091
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7666666666666666
+2022-08-23 03:43:57,202 - mmaction - INFO - Saving checkpoint at 40 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:44:23,307 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000970125 seconds to Reading detection results
+==> 0.000494957 seconds to read file AVA_20220823_034423_result.csv
+==> 0.00149035 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00999784 seconds to convert detections
+==> 0.000999928 seconds to run_evaluator
+2022-08-23 03:44:23,323 - mmaction - INFO - 
+mAP@0.5IOU	 0.7269
+2022-08-23 03:44:23,324 - mmaction - INFO - Epoch(val) [40][25]	mAP@0.5IOU: 0.7269
+mAP@0.5IOU=	0.7269240592656883
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5674603174603174
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9641489731987469
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.8966017316017316
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.8333333333333333
+2022-08-23 03:44:53,475 - mmaction - INFO - Saving checkpoint at 41 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:45:19,103 - mmaction - INFO - Evaluating mAP ...
+==> 0.00049758 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000962973 seconds to Reading detection results
+==> 0.000498772 seconds to read file AVA_20220823_034519_result.csv
+==> 0.000999689 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.0105112 seconds to convert detections
+==> 0.000499725 seconds to run_evaluator
+2022-08-23 03:45:19,120 - mmaction - INFO - 
+mAP@0.5IOU	 0.7033
+2022-08-23 03:45:19,121 - mmaction - INFO - Epoch(val) [41][25]	mAP@0.5IOU: 0.7033
+mAP@0.5IOU=	0.7032839485458164
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5343137254901961
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9855769230769231
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.928348396243133
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.09090909090909091
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6805555555555556
+2022-08-23 03:45:49,445 - mmaction - INFO - Saving checkpoint at 42 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:46:17,311 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000993967 seconds to Reading detection results
+==> 0.000534296 seconds to read file AVA_20220823_034617_result.csv
+==> 0.0010004 seconds to Reading detection results
+==> 0.000499725 seconds to Convert groundtruth
+==> 0.00954223 seconds to convert detections
+==> 0.000983953 seconds to run_evaluator
+2022-08-23 03:46:17,326 - mmaction - INFO - 
+mAP@0.5IOU	 0.7502
+2022-08-23 03:46:17,327 - mmaction - INFO - Epoch(val) [42][25]	mAP@0.5IOU: 0.7502
+mAP@0.5IOU=	0.7501903010894239
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5549242424242424
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9184397863345232
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.9166666666666666
+2022-08-23 03:46:47,646 - mmaction - INFO - Saving checkpoint at 43 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:47:15,920 - mmaction - INFO - Evaluating mAP ...
+==> 0.000511408 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100613 seconds to Reading detection results
+==> 0.000500917 seconds to read file AVA_20220823_034715_result.csv
+==> 0.000994444 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.0095048 seconds to convert detections
+==> 0.000993252 seconds to run_evaluator
+2022-08-23 03:47:15,934 - mmaction - INFO - 
+mAP@0.5IOU	 0.7352
+2022-08-23 03:47:15,936 - mmaction - INFO - Epoch(val) [43][25]	mAP@0.5IOU: 0.7352
+mAP@0.5IOU=	0.7352438010332748
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5512820512820513
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9157363104731526
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.8333333333333333
+2022-08-23 03:47:46,437 - mmaction - INFO - Saving checkpoint at 44 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:48:14,281 - mmaction - INFO - Evaluating mAP ...
+==> 0.000495911 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000962496 seconds to Reading detection results
+==> 0.000500202 seconds to read file AVA_20220823_034814_result.csv
+==> 0.000999212 seconds to Reading detection results
+==> 0.000500202 seconds to Convert groundtruth
+==> 0.00904775 seconds to convert detections
+==> 0.000928879 seconds to run_evaluator
+2022-08-23 03:48:14,296 - mmaction - INFO - 
+mAP@0.5IOU	 0.7163
+2022-08-23 03:48:14,297 - mmaction - INFO - Epoch(val) [44][25]	mAP@0.5IOU: 0.7163
+mAP@0.5IOU=	0.7162574348977858
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9835164835164836
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9251392369813423
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7777777777777778
+2022-08-23 03:48:44,828 - mmaction - INFO - Saving checkpoint at 45 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:49:09,467 - mmaction - INFO - Evaluating mAP ...
+==> 0.000499487 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000998974 seconds to Reading detection results
+==> 0.000500917 seconds to read file AVA_20220823_034909_result.csv
+==> 0.00150084 seconds to Reading detection results
+==> 0.000499964 seconds to Convert groundtruth
+==> 0.00950551 seconds to convert detections
+==> 0.000993729 seconds to run_evaluator
+2022-08-23 03:49:09,482 - mmaction - INFO - 
+mAP@0.5IOU	 0.6891
+2022-08-23 03:49:09,483 - mmaction - INFO - Epoch(val) [45][25]	mAP@0.5IOU: 0.6891
+mAP@0.5IOU=	0.6891374802415992
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.4916666666666667
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	0.9794871794871796
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9172063888311027
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.6464646464646465
+2022-08-23 03:49:39,968 - mmaction - INFO - Saving checkpoint at 46 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:50:09,462 - mmaction - INFO - Evaluating mAP ...
+==> 0.000461817 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000968456 seconds to Reading detection results
+==> 0.00049901 seconds to read file AVA_20220823_035009_result.csv
+==> 0.000998497 seconds to Reading detection results
+==> 0.000500202 seconds to Convert groundtruth
+==> 0.00999904 seconds to convert detections
+==> 0.00100017 seconds to run_evaluator
+2022-08-23 03:50:09,478 - mmaction - INFO - 
+mAP@0.5IOU	 0.7275
+2022-08-23 03:50:09,480 - mmaction - INFO - Epoch(val) [46][25]	mAP@0.5IOU: 0.7275
+mAP@0.5IOU=	0.7275426571479203
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5436507936507937
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9120813397129186
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.8095238095238095
+2022-08-23 03:50:39,800 - mmaction - INFO - Saving checkpoint at 47 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.5 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:51:05,399 - mmaction - INFO - Evaluating mAP ...
+==> 0.000502825 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00099349 seconds to Reading detection results
+==> 0.000499249 seconds to read file AVA_20220823_035105_result.csv
+==> 0.000999928 seconds to Reading detection results
+==> 0.000499964 seconds to Convert groundtruth
+==> 0.00900841 seconds to convert detections
+==> 0.00100136 seconds to run_evaluator
+2022-08-23 03:51:05,415 - mmaction - INFO - 
+mAP@0.5IOU	 0.7017
+2022-08-23 03:51:05,416 - mmaction - INFO - Epoch(val) [47][25]	mAP@0.5IOU: 0.7017
+mAP@0.5IOU=	0.7016606687659319
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.4935897435897436
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9108187134502925
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.08333333333333333
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7222222222222223
+2022-08-23 03:51:36,041 - mmaction - INFO - Saving checkpoint at 48 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:52:05,782 - mmaction - INFO - Evaluating mAP ...
+==> 0 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.00100946 seconds to Reading detection results
+==> 0.000485897 seconds to read file AVA_20220823_035205_result.csv
+==> 0.000977755 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00900078 seconds to convert detections
+==> 0.000998974 seconds to run_evaluator
+2022-08-23 03:52:05,797 - mmaction - INFO - 
+mAP@0.5IOU	 0.7221
+2022-08-23 03:52:05,797 - mmaction - INFO - Epoch(val) [48][25]	mAP@0.5IOU: 0.7221
+mAP@0.5IOU=	0.72211937672464
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9120813397129186
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1111111111111111
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.8095238095238095
+2022-08-23 03:52:36,019 - mmaction - INFO - Saving checkpoint at 49 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:53:05,389 - mmaction - INFO - Evaluating mAP ...
+==> 0.00049758 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.0010016 seconds to Reading detection results
+==> 0 seconds to read file AVA_20220823_035305_result.csv
+==> 0.000991344 seconds to Reading detection results
+==> 0.000501156 seconds to Convert groundtruth
+==> 0.00900578 seconds to convert detections
+==> 0.000502348 seconds to run_evaluator
+2022-08-23 03:53:05,404 - mmaction - INFO - 
+mAP@0.5IOU	 0.7628
+2022-08-23 03:53:05,419 - mmaction - INFO - Epoch(val) [49][25]	mAP@0.5IOU: 0.7628
+mAP@0.5IOU=	0.762792819591065
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.5555555555555556
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9212013619908357
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.1
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	1.0
+2022-08-23 03:53:35,671 - mmaction - INFO - Saving checkpoint at 50 epochs
+[>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>] 25/25, 2.4 task/s, elapsed: 10s, ETA:     0s
+2022-08-23 03:54:03,663 - mmaction - INFO - Evaluating mAP ...
+==> 0.000494719 seconds to read file ava_mma/main_result/dataset/HBVSMCGRG_VAL.csv
+==> 0.000995398 seconds to Reading detection results
+==> 0.000499964 seconds to read file AVA_20220823_035403_result.csv
+==> 0.000999928 seconds to Reading detection results
+==> 0 seconds to Convert groundtruth
+==> 0.00950432 seconds to convert detections
+==> 0.00100422 seconds to run_evaluator
+2022-08-23 03:54:03,678 - mmaction - INFO - 
+mAP@0.5IOU	 0.7094
+2022-08-23 03:54:03,679 - mmaction - INFO - Epoch(val) [50][25]	mAP@0.5IOU: 0.7094
+mAP@0.5IOU=	0.7094167447237623
+PerformanceByCategory/AP@0.5IOU/body_punch=	0.4880952380952381
+PerformanceByCategory/AP@0.5IOU/distance_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/parter_punch=	1.0
+PerformanceByCategory/AP@0.5IOU/head_punch=	0.9219405837826891
+PerformanceByCategory/AP@0.5IOU/submission_attempt=	0.09090909090909091
+PerformanceByCategory/AP@0.5IOU/clinch_punch=	0.7555555555555555
